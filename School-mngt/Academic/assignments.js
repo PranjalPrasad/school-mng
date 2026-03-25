@@ -1429,5 +1429,7 @@
             renderDrafts();
             renderScheduled();
             updateStatistics();
+
+            initAccessControl();
         });
     

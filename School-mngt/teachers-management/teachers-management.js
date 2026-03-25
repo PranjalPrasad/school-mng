@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupResponsiveSidebar();
     loadInitialData();
     calculateTotalSalary();
+    initAccessControl();
     
     // Check URL parameters to show appropriate section
     const urlParams = new URLSearchParams(window.location.search);
@@ -107,7 +108,7 @@ function generateSampleTeachers() {
             id: 1,
             teacherId: 'TCH1001',
             name: 'Mr. Rajesh Sharma',
-            dob: '1985-05-15',
+            dob: '19)5-05-15',
             gender: 'Male',
             bloodGroup: 'A+',
             address: '123 Main Street, Pimpri, Pune - 411017',

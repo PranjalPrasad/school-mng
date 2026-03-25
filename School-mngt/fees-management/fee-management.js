@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeDatePickers();
     loadFeesData();
     setupEventListeners();
+    initAccessControl();
 
     // Check URL parameters for specific views
     const urlParams = new URLSearchParams(window.location.search);

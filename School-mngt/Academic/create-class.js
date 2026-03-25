@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupEventListeners();
     setupResponsiveSidebar();
     initializeClassModule();
+    initAccessControl();
 });
 
 // Global variables

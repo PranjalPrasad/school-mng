@@ -334,6 +334,7 @@
         // Initialize Application
         document.addEventListener('DOMContentLoaded', function() {
             initApp();
+            initAccessControl();
         });
 
         // Initialize App

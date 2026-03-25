@@ -6,6 +6,7 @@
     <title>School Portal - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/access-control.js"></script>
     <style>
         /* Custom styles from original code */
         ::-webkit-scrollbar {
@@ -89,77 +90,93 @@
         </div>
     </div>
  
-    <script>
-        // Constants
-        const USER_SESSION_KEY = 'school_portal_session';
-       
-        // Toast Notification System
-        class Toast {
-            static show(message, type = 'success', duration = 3000) {
-                const toast = document.createElement('div');
-                const bgColor = {
-                    success: 'bg-green-500',
-                    error: 'bg-red-500',
-                    warning: 'bg-yellow-500',
-                    info: 'bg-blue-500'
-                }[type];
-               
-                const icon = {
-                    success: 'fa-check-circle',
-                    error: 'fa-exclamation-circle',
-                    warning: 'fa-exclamation-triangle',
-                    info: 'fa-info-circle'
-                }[type];
-               
-                toast.className = `toast ${bgColor} text-white flex items-center space-x-3`;
-                toast.innerHTML = `
-                    <i class="fas ${icon} text-xl"></i>
-                    <span>${message}</span>
-                `;
-               
-                document.getElementById('toastContainer').appendChild(toast);
-               
-                setTimeout(() => toast.classList.add('show'), 10);
-               
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                    setTimeout(() => toast.remove(), 300);
-                }, duration);
-            }
+   <script>
+    // ================== ADMIN CREDENTIALS (Two Versions) ==================
+    const ADMIN_USERS = {
+        "basicadmin": {
+            password: "basic123",
+            role: "basic",
+            name: "Basic Administrator"
+        },
+        "advancedadmin": {
+            password: "advanced123",
+            role: "advanced",
+            name: "Advanced Administrator"
         }
-       
-        // Session Management
-        function createSession(username) {
+    };
+
+    // ================== TOAST NOTIFICATION (Copy from your original) ==================
+    class Toast {
+        static show(message, type = 'success', duration = 3000) {
+            const toast = document.createElement('div');
+            const bgColor = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                warning: 'bg-yellow-500',
+                info: 'bg-blue-500'
+            }[type];
+
+            const icon = {
+                success: 'fa-check-circle',
+                error: 'fa-exclamation-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            }[type];
+
+            toast.className = `toast ${bgColor} text-white flex items-center space-x-3`;
+            toast.innerHTML = `
+                <i class="fas ${icon} text-xl"></i>
+                <span>${message}</span>
+            `;
+
+            document.getElementById('toastContainer').appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        }
+    }
+
+    // ================== LOGIN HANDLER ==================
+    function handleLogin(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value.trim().toLowerCase();
+        const password = document.getElementById('password').value;
+
+        const user = ADMIN_USERS[username];
+
+        if (user && user.password === password) {
             const session = {
-                username,
-                expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours
+                username: username,
+                role: user.role,
+                name: user.name,
+                expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
             };
-            localStorage.setItem(USER_SESSION_KEY, JSON.stringify(session));
+
+            localStorage.setItem('school_portal_session', JSON.stringify(session));
+            
+            Toast.show('Login successful! Redirecting...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        } else {
+            Toast.show('Invalid username or password!', 'error');
         }
-       
-        // Login Handler
-        function handleLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-           
-            if (username === 'admin' && password === 'admin123') {
-                createSession(username);
-                Toast.show('Login successful! Redirecting...', 'success');
-               
-                // Redirect to dashboard after successful login
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1000);
-            } else {
-                Toast.show('Invalid username or password', 'error');
-            }
-        }
-       
-        // Setup Event Listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('loginForm').addEventListener('submit', handleLogin);
-        });
-    </script>
+    }
+
+    // ================== INIT ==================
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+        
+        // Demo credentials in console
+        console.log("%c✅ Basic Admin → username: basicadmin | password: basic123", "color: blue; font-weight:bold");
+        console.log("%c✅ Advanced Admin → username: advancedadmin | password: advanced123", "color: purple; font-weight:bold");
+    });
+</script>
 </body>
 </html>

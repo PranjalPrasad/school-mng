@@ -7,6 +7,7 @@
             initializeCalendar();
             loadHolidays();
             updateCurrentDate();
+            initAccessControl();
         });
 
         // Global variables

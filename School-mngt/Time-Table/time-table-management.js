@@ -9,6 +9,7 @@
             setupEventListeners();
             setupResponsiveSidebar();
             initializeTimetable();
+            initAccessControl();
         });
 
         // Global variables
@@ -439,4 +440,6 @@
         // Make functions globally available
         window.openSlotModal = openSlotModal;
         window.openBreakModal = openBreakModal;
+
+        
     

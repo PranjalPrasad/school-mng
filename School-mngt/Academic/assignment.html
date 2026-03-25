@@ -10,6 +10,7 @@
     <!-- Add jsPDF and XLSX for exports -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="/access-control.js"></script>
     <style>
         /* ============================================================================
        MODERN MINIMAL ADMIN DASHBOARD STYLES - 2025/2026 STYLE
@@ -1764,7 +1765,7 @@
                     </button>
                     <div class="flex items-center">
                         <div class="h-10 w-36 rounded-lg flex items-center justify-center">
-                            <img src="/assets/kunash_logo.png" alt="School Logo">
+                            <img src="/School-mngt/assets/kunash_logo.png" alt="School Logo">
                         </div>
                     </div>
                 </div>
@@ -1836,129 +1837,166 @@
             </div>
         </nav>
 
+       
         <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar shadow-lg">
-            <div class="sidebar-scroll">
-                <div class="space-y-1 p-4">
-                    <a data-tooltip="Dashboard" href="/index.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200 group">
-                        <i class="fas fa-home text-black nav-icon"></i>
-                        <span class="nav-text text-black">Dashboard</span>
-                    </a>
+<aside id="sidebar" class="sidebar shadow-lg">
+    <div class="sidebar-scroll">
+        <div class="space-y-2 p-4 mt-2">
+            <a data-tooltip="Dashboard" href="/School-mngt/index.html" onclick="showSection('dashboard')"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg bg-blue-700 text-white hover:bg-blue-800 transition-all duration-200 group">
+                <i class="fas fa-home text-white nav-icon"></i>
+                <span class="nav-text text-white">Dashboard</span>
+            </a>
 
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Student Management</p>
-                    </div>
-
-                    <a data-tooltip="All Students" href="/student-management/student-management.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200 group">
-                        <i class="fas fa-user-graduate text-black nav-icon"></i>
-                        <span class="nav-text text-black">All Students</span>
-                        <span class="ml-auto bg-blue-500 text-black text-xs px-2 py-1 rounded-full nav-text">245</span>
-                    </a>
-
-                    <a data-tooltip="Add Student" href="/student-management/student-management.html?action=add"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-user-plus text-black nav-icon"></i>
-                        <span class="nav-text text-black">Add Student</span>
-                    </a>
-
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Teacher Management</p>
-                    </div>
-
-                    <a data-tooltip="All Teachers" href="/teachers-management/teachers-management.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200 group">
-                        <i class="fas fa-chalkboard-teacher text-black nav-icon"></i>
-                        <span class="nav-text text-black">All Teachers</span>
-                        <span class="ml-auto bg-blue-500 text-black text-xs px-2 py-1 rounded-full nav-text">68</span>
-                    </a>
-
-                    <a data-tooltip="Add Teacher" href="/teachers-management/teachers-management.html?action=add"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-user-tie text-black nav-icon"></i>
-                        <span class="nav-text text-black">Add Teacher</span>
-                    </a>
-
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Academic</p>
-                    </div>
-
-                    <a data-tooltip="Assignment Management" href="/Academic/assignment.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg bg-blue-700 text-white group">
-                        <i class="fas fa-tasks nav-icon"></i>
-                        <span class="nav-text">Assignments</span>
-                        <span id="assignmentCount" class="ml-auto bg-white text-blue-600 text-xs px-2 py-1 rounded-full nav-text">0</span>
-                    </a>
-
-                    <a data-tooltip="Attendance" href="/Academic/attendance.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-calendar-check text-black nav-icon"></i>
-                        <span class="nav-text text-black">Attendance</span>
-                    </a>
-
-                    <a data-tooltip="Marks & Reports" href="/Academic/marks&reports.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-chart-line text-black nav-icon"></i>
-                        <span class="nav-text text-black">Marks & Reports</span>
-                    </a>
-
-                    <a data-tooltip="Create Class" href="/Academic/create-class.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-chalkboard text-black nav-icon"></i>
-                        <span class="nav-text text-black">Create Class</span>
-                    </a>
-
-                    <a data-tooltip="ExamManagement" href="/Academic/examSchedule.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-calendar-alt text-black nav-icon"></i>
-                        <span class="nav-text text-black">Exam Management</span>
-                    </a>
-
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Time Table</p>
-                    </div>
-
-                    <a data-tooltip="Time Table Management" href="/Time-Table/time-table-management.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-calendar-alt text-black nav-icon"></i>
-                        <span class="nav-text text-black">Time Table</span>
-                    </a>
-
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Financial</p>
-                    </div>
-
-                    <a data-tooltip="Fees Management" href="/fees-management/fee-management.html"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-money-bill-wave text-black nav-icon"></i>
-                        <span class="nav-text text-black">Fees Management</span>
-                        <span class="ml-auto bg-red-500 text-black text-xs px-2 py-1 rounded-full nav-text">₹45k</span>
-                    </a>
-
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Notice Management</p>
-                    </div>
-
-                    <a data-tooltip="All Notices" href="/notice.html" onclick="switchTab('all')"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group"
-                        id="navAllNotices">
-                        <i class="fas fa-bullhorn text-black nav-icon"></i>
-                        <span class="nav-text text-black">All Notices</span>
-                    </a>
-
-                    <div class="pt-4 pb-2">
-                        <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">System</p>
-                    </div>
-
-                    <a data-tooltip="Settings" href="#"
-                        class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
-                        <i class="fas fa-cog text-black nav-icon"></i>
-                        <span class="nav-text text-black">Settings</span>
-                    </a>
-                </div>
+            <!-- Student Management -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Student Management</p>
             </div>
-        </aside>
+
+            <a href="/School-mngt/student-management/student-management.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200 group">
+                <i class="fas fa-user-graduate text-black nav-icon"></i>
+                <span class="nav-text text-black">All Students</span>
+            </a>
+
+            <a href="/School-mngt/student-management/student-management.html?action=add"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-user-plus text-black nav-icon"></i>
+                <span class="nav-text text-black">Add Student</span>
+            </a>
+
+            <!-- New: Inquiry -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Inquiry Management</p>
+            </div>
+
+            <a href="/School-mngt/inquiry/inquiry.html" 
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-question-circle text-black nav-icon"></i>
+                <span class="nav-text text-black">All Inquiries</span>
+            </a>
+
+            <!-- <a href="/inquiry/inquiry.html?action=add" 
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-plus-circle text-black nav-icon"></i>
+                <span class="nav-text text-black">New Inquiry</span>
+            </a> -->
+
+            <!-- Teacher Management -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Teacher Management</p>
+            </div>
+
+            <a href="/School-mngt/teachers-management/teacher-attendance.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200 group">
+                <i class="fas fa-calendar-check text-black nav-icon"></i>
+                <span class="nav-text text-black">Teachers Attendance</span>
+            </a>
+
+            <a href="/School-mngt/teachers-management/teachers-management.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200 group">
+                <i class="fas fa-chalkboard-teacher text-black nav-icon"></i>
+                <span class="nav-text text-black">All Teachers</span>
+            </a>
+
+            <a href="/School-mngt/teachers-management/teachers-management.html?action=add"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-user-tie text-black nav-icon"></i>
+                <span class="nav-text text-black">Add Teacher</span>
+            </a>
+
+            <!-- Academic -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Academic</p>
+            </div>
+
+            <a href="/School-mngt/Academic/assignment.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-tasks text-black nav-icon"></i>
+                <span class="nav-text text-black">Assignment</span>
+            </a>
+
+            <a href="/School-mngt/Academic/attendance.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-calendar-check text-black nav-icon"></i>
+                <span class="nav-text text-black">Attendance</span>
+            </a>
+
+            <a href="/School-mngt/Academic/marks&reports.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-chart-line text-black nav-icon"></i>
+                <span class="nav-text text-black">Marks & Reports</span>
+            </a>
+
+            <a href="/School-mngt/Academic/create-class.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-chalkboard text-black nav-icon"></i>
+                <span class="nav-text text-black">Create Class</span>
+            </a>
+
+            <a href="/School-mngt/Academic/examSchedule.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-calendar-alt text-black nav-icon"></i>
+                <span class="nav-text text-black">Exam Management</span>
+            </a>
+
+            <!-- New: Calendar -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Calendar</p>
+            </div>
+
+            <a href="/School-mngt/calendar/calendar.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-calendar text-black nav-icon"></i>
+                <span class="nav-text text-black">School Calendar</span>
+            </a>
+
+            <!-- Time Table -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Time Table</p>
+            </div>
+
+            <a href="/School-mngt/Time-Table/time-table-management.html"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-calendar-alt text-black nav-icon"></i>
+                <span class="nav-text text-black">Time Table</span>
+            </a>
+
+            <!-- Financial -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Financial</p>
+            </div>
+
+            <a href="/School-mngt/fees-management/fee-management.html" onclick="showSection('fees')"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-money-bill-wave text-black nav-icon"></i>
+                <span class="nav-text text-black">Fees Management</span>
+            </a>
+
+            <!-- Notice Management -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">Notice Management</p>
+            </div>
+
+            <a href="/School-mngt/School-mngt/notice/notice.html" onclick="switchTab('all')"
+                class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group"
+                id="navAllNotices">
+                <i class="fas fa-bullhorn text-black nav-icon"></i>
+                <span class="nav-text text-black">All Notices</span>
+            </a>
+
+            <!-- System -->
+            <div class="pt-4 pb-2">
+                <p class="text-xs text-black uppercase tracking-wider px-4 nav-text">System</p>
+            </div>
+
+            <a href="#" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 group">
+                <i class="fas fa-cog text-black nav-icon"></i>
+                <span class="nav-text text-black">Settings</span>
+            </a>
+        </div>
+    </div>
+</aside>
 
         <!-- Main Content Area -->
         <main id="mainContent" class="transition-all duration-300">
