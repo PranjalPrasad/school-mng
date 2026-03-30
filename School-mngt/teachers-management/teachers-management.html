@@ -7,7 +7,6 @@
     <title>Teacher Management - School Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="/access-control.js"></script>  
     <style>
         /* ============================================================================
        MODERN MINIMAL ADMIN DASHBOARD STYLES - 2025/2026 STYLE
@@ -2091,7 +2090,14 @@
         }
     </script>
     <!-- Link to external JavaScript file -->
-    <script src="/teachers-management/teachers-management.js"></script>
+    <script src="../teachers-management/teachers-management.js"></script>
+
+     <script src="/access-control.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initAccessControl();
+        });
+    </script>
 </body>
 
 </html>

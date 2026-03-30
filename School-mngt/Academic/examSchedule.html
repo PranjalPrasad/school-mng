@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="exams.css">
-    <script src="/access-control.js"></script>
     <style>
         /* ============================================================================
        MODERN MINIMAL ADMIN DASHBOARD STYLES - 2025/2026 STYLE
@@ -959,6 +958,12 @@
         </main>
     </div>
 
-    <script src="examSchedule.js"></script>
+    <script src="../Academic/examSchedule.js"></script>
+     <script src="/access-control.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initAccessControl();
+        });
+    </script>
 </body>
 </html>

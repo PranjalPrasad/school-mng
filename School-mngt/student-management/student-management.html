@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Load QRCode library from a reliable CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="/access-control.js"></script>
     <style>
         /* ============================================================================
            MODERN MINIMAL ADMIN DASHBOARD STYLES - 2025/2026 STYLE
@@ -2281,7 +2280,14 @@
             });
         });
     </script>
-    <script src="/student-management/student-management.js"></script>
+    <script src="../student-management/student-management.js"></script>
+
+     <script src="/access-control.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initAccessControl();
+        });
+    </script>
 </body>
 
 </html>

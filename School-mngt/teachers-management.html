@@ -7,7 +7,6 @@
     <title>School Portal - Teacher Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="/access-control.js"></script>
     <style>
         /* Custom styles from original code */
         ::-webkit-scrollbar {
@@ -2389,6 +2388,13 @@
             // This would print teacher details
             Toast.show('Print functionality will be implemented here', 'info');
         }
+    </script>
+
+     <script src="/access-control.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initAccessControl();
+        });
     </script>
 </body>
 

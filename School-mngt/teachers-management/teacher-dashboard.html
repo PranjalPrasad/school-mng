@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="/access-control.js"></script>
     <style>
         :root {
             --primary: #4361ee;
@@ -541,6 +540,14 @@
     <div id="toastContainer" class="fixed bottom-4 right-4 z-50 space-y-2 max-w-md"></div>
 
     <!-- Link to external JavaScript file -->
-    <script src="teacher-dashboard.js"></script>
+    <script src="../teachers-management/teacher-dashboard.js"></script>
+
+
+     <script src="/access-control.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initAccessControl();
+        });
+    </script>
 </body>
 </html>

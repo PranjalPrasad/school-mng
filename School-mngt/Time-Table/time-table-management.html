@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-     <script src="/access-control.js"></script>
     <style>
         /* ============================================================================
        MODERN MINIMAL ADMIN DASHBOARD STYLES - 2025/2026 STYLE
@@ -2804,6 +2803,15 @@
             });
 
             document.getElementById('sidebarOverlay').addEventListener('click', closeMobileSidebar);
+        });
+    </script>
+    
+
+     <script src="../Time-Table/time-table-management.js"></script>
+     <script src="/access-control.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initAccessControl();
         });
     </script>
 </body>
